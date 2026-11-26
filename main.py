@@ -25,6 +25,8 @@ def checked_line():
     text = SIGN_LINE.strip()
     if not text:
         raise ValueError("entry line must not be only whitespace")
+    if "\n" in text or "\r" in text:
+        raise ValueError("entry line must be a single line")
     if len(text) > MAX_CHARS:
         raise ValueError(
             "entry line is %d characters, over the %d limit"
